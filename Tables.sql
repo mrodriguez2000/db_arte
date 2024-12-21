@@ -1,0 +1,71 @@
+-- Active: 1727036930520@@127.0.0.1@5432@db_arte@public
+-- Tabla artista
+CREATE TABLE artista(
+    ID_Artista SERIAL PRIMARY KEY,
+    Nombre_Artista VARCHAR(50) NOT NULL,
+    Fecha_Nacimiento_Artistra DATE NOT NULL,
+    Edad_Artista INT
+);
+-- Tabla tipo de arte
+CREATE TABLE tipo_arte(
+    ID_Arte SERIAL PRIMARY KEY,
+    Nombre_Arte VARCHAR(30) NOT NULL
+);
+-- tabla de clientes
+CREATE TABLE cliente(
+    ID_Cliente SERIAL PRIMARY KEY,
+    Nombre_Cliente VARCHAR(50) NOT NULL,
+    Direccion_Cliente VARCHAR(50),
+    Dinero_Invertido INT,
+    Cantidad_Compras INT
+);
+-- tabla de categorias
+CREATE TABLE categoria(
+    ID_Categoria SERIAL PRIMARY KEY,
+    Nombre_Categoria VARCHAR(30) NOT NULL
+);
+-- tabla de pieza de arte
+CREATE TABLE pieza_arte(
+    ID_Pieza SERIAL PRIMARY KEY,
+    ID_Artista INT NOT NULL,
+    ID_Arte INT NOT NULL,
+    Fecha_Lanzamiento DATE NOT NULL,
+    Nombre_Pieza VARCHAR(50) NOT NULL,
+    Precio_Venta INT NOT NULL,
+    -- Añadir claves foraneas
+    CONSTRAINT FK_ARTISTA FOREIGN KEY(ID_Artista) REFERENCES artista(ID_Artista)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    /* las últimas lineas on delete y on update cascade funcionan para modificar o 
+    eliminar registros de la clave foranea de la tabla pieza_arte en caso de que algún elemento 
+    de la clave primaria ID_Artista sea eliminado o modificado en la tabla */
+    CONSTRAINT FK_ARTE FOREIGN KEY(ID_Arte) REFERENCES tipo_arte(ID_Arte)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+-- Tabla de categorias de pieza de arte
+CREATE TABLE categoria_pieza(
+    ID_Categoria_Pieza SERIAL PRIMARY KEY,
+    ID_Pieza INT NOT NULL,
+    ID_Categoria INT NOT NULL,
+    CONSTRAINT FK_PIEZA FOREIGN KEY(ID_Pieza) REFERENCES pieza_arte(ID_Pieza)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT FK_CATEGORIA_PIEZA FOREIGN KEY(ID_Categoria) REFERENCES categoria(ID_Categoria)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+-- Tabla de ventas
+CREATE TABLE venta(
+    ID_Venta SERIAL PRIMARY KEY,
+    ID_Pieza INT NOT NULL,
+    ID_Cliente INT NOT NULL,
+    Fecha_Venta DATE NOT NULL,
+    Cantidad_Comprada INT NOT NULL,
+    CONSTRAINT FK_PIEZA_VENTA FOREIGN KEY(ID_Pieza) REFERENCES pieza_arte(ID_Pieza)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT FK_CLIENTE FOREIGN KEY(ID_Cliente) REFERENCES cliente(ID_Cliente)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
