@@ -1,9 +1,9 @@
 -- Active: 1727036930520@@127.0.0.1@5432@db_arte@public
 -- Tabla artista
 CREATE TABLE artista(
-    ID_Artista SERIAL PRIMARY KEY,
+    ID_Artista SERIAL PRIMARY KEY, -- El tipo de dato SERIAL permite que cada vez que se inserte un nuevo registro el ID_Artista autoincrementará de uno en uno 
     Nombre_Artista VARCHAR(50) NOT NULL,
-    Fecha_Nacimiento_Artistra DATE NOT NULL,
+    Fecha_Nacimiento_Artista DATE NOT NULL,
     Edad_Artista INT
 );
 -- Tabla tipo de arte
