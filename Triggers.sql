@@ -78,9 +78,6 @@ CREATE OR REPLACE TRIGGER valor_invertido AFTER INSERT ON detalle_venta FOR EACH
 EXECUTE PROCEDURE calcular_valor_invertido();
 
 
-
-
-
 -- Función que evita que una fecha de venta sea menor a la fecha de lanzamiento de la pieza de arte
 
 CREATE OR REPLACE FUNCTION comprueba_fecha_venta() RETURNS TRIGGER AS

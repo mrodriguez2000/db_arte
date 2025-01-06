@@ -7,11 +7,7 @@ VALUES
     ('Jean-Michel Basquiat', '1975-12-22'),
     ('Frida Kahlo', '1985-07-06'),
     ('Georgia O''Keeffe', '1977-11-15'),
-    ('Yayoi Kusama', '1965-03-22'),
-    ('Andy Warhol', '1968-08-06'),
-    ('Tamara de Lempicka', '1972-05-16'),
-    ('Rene Magritte', '1970-11-21'),
-    ('Joan Miró', '1976-06-20');
+    ('Yayoi Kusama', '1965-03-22');
 
 -- Insercion de clientes con nombres propios
 INSERT INTO cliente (nombre_cliente, direccion_cliente) 
@@ -25,11 +21,6 @@ VALUES
     ('David Castro', 'Calle Río 890'),
     ('Isabel Díaz', 'Av. Lago 321'),
     ('Pedro Molina', 'Calle Bosque 654'),
-    ('Sofía Navarro', 'Calle Flor 987'),
-    ('Daniel Rojas', 'Calle Montaña 741'),
-    ('Lucía Vázquez', 'Calle Viento 852'),
-    ('Javier Blanco', 'Av. Lluvia 963'),
-    ('Patricia López', 'Calle Trueno 159'),
     ('Miguel Ruiz', 'Av. Rayo 357');
 
 -- Insercion de tipos de arte
@@ -65,7 +56,19 @@ INSERT INTO venta (id_cliente, fecha_venta) VALUES
     (1, '1993-05-20'),
     (2, '1996-09-12'),
     (3, '1993-05-21'),
-    (4, '1986-09-12');
+    (4, '1986-09-12'),
+    (5, '1986-09-12'),
+    (6, '1995-02-10'),
+    (7, '1995-06-10'),
+    (8, '1996-06-12'),
+    (9, '1996-06-12'),
+    (10, '1996-06-12'),
+    (6, '2000-11-30'),
+    (9, '2000-11-30'),
+    (10, '2000-12-10'),
+    (1, '2001-03-02'),
+    (3, '2001-03-05');
+
 
 INSERT INTO detalle_venta (id_venta, id_pieza, cantidad) VALUES
     (1, 3, 1),
@@ -73,4 +76,24 @@ INSERT INTO detalle_venta (id_venta, id_pieza, cantidad) VALUES
     (2, 1, 2),
     (3, 3, 2),
     (3, 10, 1),
-    (4, 11, 2);
+    (4, 11, 2),
+    (5, 12, 2),
+    (5, 11, 1),
+    (6, 11, 2),
+    (6, 12, 2),
+    (7, 3, 2),
+    (7, 9, 1),
+    (8, 12, 1),
+    (9, 4, 2),
+    (9, 6, 2),
+    (10, 1, 3),
+    (10, 6, 2),
+    (11, 7, 3),
+    (11, 3, 1),
+    (12, 7, 2),
+    (12, 1, 1),
+    (13, 7, 1),
+    (13, 5, 2),
+    (14, 8, 2),
+    (15, 7, 2),
+    (15, 1, 1);
